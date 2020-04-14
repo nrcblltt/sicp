@@ -10,7 +10,7 @@
 (define (rec-reverse l)
   (if (null? (cdr l))
       l
-      (append (reverse (cdr l)) (list (car l)))))
+      (append (rec-reverse (cdr l)) (list (car l)))))
 
 (define (append list1 list2)
   (if (null? list1)
