@@ -1,3 +1,5 @@
+#lang sicp
+
 (define (subsets s)
   (if (null? s)
       (list '())
