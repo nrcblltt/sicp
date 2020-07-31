@@ -1,3 +1,5 @@
+#lang sicp
+
 (define (make-center-width c w)
   (make-interval (- c w) (+ c w)))
 
