@@ -21,7 +21,6 @@
 (define (add7 x)
   (+ x 7))
 
-
 (map square (list 1 2 3 4 5))
 (map add7 (list 1 2 3 4 5))
 (append (list 1 2 3) (list 4 5 6))
