@@ -1,0 +1,23 @@
+#lang sicp
+
+(define (equal? l1 l2)
+  (cond ((null? l1) (null? l2))
+        ((null? l2) (null? l1))
+        ((and (not (pair? l1)) (not (pair? l2)))
+         (eq? l1 l2))
+        ((and (pair? l1) (pair? l2))
+         (and (equal? (car l1) (car l2)) (equal? (cdr l1) (cdr l2))))))
+
+(equal? '(this is a list) '(this is a list))
+(equal? '(2 3 4 5) '(2 3 4 5))
+(equal? '(8 7 4 (3 4 5 (3 2 1)) 2 3) '(8 7 4 (3 4 5 (3 2 1)) 2 3))
+(equal? '(this is a list) '(this (is a) list))
+(equal? '(8 7 (4 5)) '(8 7 4 5))
+(equal? '((8 7) 4 5) '(8 7 4 5))
+(equal? '(8 (7 4) 5) '(8 7 4 5))
+(equal? '(8 (7 (4)) 5) '(8 7 4 5))
+(equal? '(8 7 4 5 6) '(8 7 4))
+(equal? '(8 7 4) '(8 7 4 5 6))
+(equal? '(8 7 4 (6 5 4) 3) '(8 7 4 (6 5) 4 3))
+(equal? '(2) '(2))
+(equal? 'a 'b)
