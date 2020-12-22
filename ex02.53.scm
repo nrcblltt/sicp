@@ -19,4 +19,4 @@
 "false"
 
 (memq 'red '(red shoes blue socks))
-"true"
+"(red shoes blue socks)"
