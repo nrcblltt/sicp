@@ -83,10 +83,10 @@
 (define (successive-merge pairs)
   (if (null? (cdr pairs))
       (car pairs)
-      (successive-merge (adjoin-set (make-code-tree (cadr pairs) (car pairs)) (cddr pairs)))))
+      (successive-merge (adjoin-set (make-code-tree (car pairs) (cadr pairs)) (cddr pairs)))))
          
 (generate-huffman-tree '((A 4) (B 2) (C 1) (D 1)))
 (generate-huffman-tree '((A 8) (B 3) (C 1) (D 1) (E 1) (F 1) (G 1) (H 1)))
 
-(define test-tree (generate-huffman-tree '((A 3) (B 5) (C 6) (D 6)))) 
-(encode '(A B C D) test-tree)
+(define test-tree (generate-huffman-tree '((A 4) (B 2) (C 1) (D 1)))) 
+(encode '(A D A B B C A) test-tree)

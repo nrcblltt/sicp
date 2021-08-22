@@ -83,7 +83,7 @@
 (define (successive-merge pairs)
   (if (null? (cdr pairs))
       (car pairs)
-      (successive-merge (adjoin-set (make-code-tree (cadr pairs) (car pairs)) (cddr pairs)))))
+      (successive-merge (adjoin-set (make-code-tree (car pairs) (cadr pairs)) (cddr pairs)))))
          
 (define alphabet '((a 2) (na 16) (boom 1) (sha 3) (get 2) (yip 9) (job 2) (wah 1)))
 (define huff-tree (generate-huffman-tree alphabet))
