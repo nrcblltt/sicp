@@ -8,4 +8,4 @@
 ; 3 - new operations. we modify the data objects who might receive the message (add the operation)
 
 ; if new types of data objects are often added, 3 is better
-; if new operations are often added, 2 is better.
+; if new operations are often added, 2 is better
