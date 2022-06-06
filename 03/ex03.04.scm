@@ -8,11 +8,11 @@
                  balance)
           "Insufficient funds"))
     (define (deposit amount)
-      (set! balance (+ balance amount))
-      balance)
+      (begin (set! balance (+ balance amount))
+             balance))
     (define (call-the-cops)
       "cops called")
-    (define (increment-and-check x)
+    (define (check-and-inc x)
       (cond
         ((< count 7) (set! count (+ 1 count)))
         (else (call-the-cops))))
@@ -24,11 +24,11 @@
                  (begin (set! count 0) deposit))
                 (else (error "Unknown request -- MAKE-ACCOUNT"
                              m)))
-          increment-and-check))
+          check-and-inc))
     dispatch))
 
 (define acc (make-account 100 'pluto))
-((acc 'pluto 'withdraw) 40)
+((acc 'pluto 'withdraw) 40) ; account now 60
 ((acc 'pippo 'deposit) 10)
 ((acc 'pippo 'deposit) 10)
 ((acc 'pippo 'deposit) 10)
@@ -36,17 +36,18 @@
 ((acc 'pippo 'deposit) 10)
 ((acc 'pippo 'deposit) 10)
 ((acc 'pippo 'deposit) 10)
-((acc 'pluto 'deposit) 10)
+((acc 'pluto 'deposit) 10) ; ok until now, account now 70
 ((acc 'pippo 'deposit) 10)
 ((acc 'pippo 'deposit) 10)
 ((acc 'pippo 'deposit) 10)
-((acc 'pluto 'deposit) 10)
-((acc 'pippo 'deposit) 10)
-((acc 'pippo 'deposit) 10)
-((acc 'pippo 'deposit) 10)
+((acc 'pluto 'deposit) 10) ; ok until now, account now 80 
 ((acc 'pippo 'deposit) 10)
 ((acc 'pippo 'deposit) 10)
 ((acc 'pippo 'deposit) 10)
 ((acc 'pippo 'deposit) 10)
 ((acc 'pippo 'deposit) 10)
 ((acc 'pippo 'deposit) 10)
+((acc 'pippo 'deposit) 10)
+((acc 'pippo 'deposit) 10) ; cops called
+((acc 'pippo 'deposit) 10) ; cops called
+((acc 'pluto 'deposit) 10) ; ok now, account now 90

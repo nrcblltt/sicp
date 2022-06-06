@@ -21,3 +21,5 @@
 (s 'how-many-calls?)
 (s 'reset-count)
 (s 'how-many-calls?)
+(s 100)
+(s 'how-many-calls?)
