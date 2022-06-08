@@ -4,7 +4,7 @@
   (define (integral-test)
     (p (random-in-range x1 x2) (random-in-range y1 y2)))
   (* (monte-carlo trials integral-test)
-     (* (- x2 x1)) (- y2 y1)))
+     (area-of-rect x1 x2 y1 y2)))
 
 (define (monte-carlo trials experiment)
   (define (iter trials-remaining trials-passed)
@@ -23,11 +23,15 @@
 (define (square x)
   (* x x))
 
-(define (unit-predicate x y)
-  (<= (+ (square x)
-         (square y))
-      1.0))
+(define (area-of-rect x1 x2 y1 y2)
+  (* (- x2 x1) (- y2 y1)))
 
-(estimate-integral unit-predicate -1.0 1.0 -1.0 1.0 100000)
+(define (circle-predicate center-x center-y radius)
+  (lambda (x y)
+    (<= (+ (square (- x center-x))
+           (square (- y center-y)))
+        (square radius))))
 
+(estimate-integral (circle-predicate 5.0 7.0 3.0) 2.0 8.0 4.0 10.0 1000000)
 
+(estimate-integral (circle-predicate 0.0 0.0 1.0) 1.0 -1.0 1.0 -1.0 100000)

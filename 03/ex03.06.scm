@@ -17,7 +17,8 @@
 (define (rand-update x)
   (+ x 2))
 
-((rand 'reset) 18)
+(rand 'generate)
+((rand 'reset) 18) 
 (rand 'generate)
 (rand 'generate)
 (rand 'generate)
